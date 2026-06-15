@@ -13,26 +13,42 @@
         color: #20304a;
         background: #fff9ed;
       }
-      body {
-        margin: 0;
-      }
-      main {
+      body { margin: 0; }
+      header, main {
         width: min(760px, calc(100% - 32px));
-        margin: 0 auto;
-        padding: 48px 0 72px;
+        margin-inline: auto;
       }
+      header {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 24px;
+      }
+      main { padding: 24px 0 72px; }
       h1, h2 {
         line-height: 1.25;
         color: #153660;
       }
-      h1 {
-        margin-bottom: 0;
+      h1 { margin-bottom: 0; }
+      h2 { margin-top: 32px; }
+      a { color: #075e9c; }
+      button {
+        border: 2px solid #326b95;
+        border-radius: 999px;
+        padding: 8px 14px;
+        color: #153660;
+        background: #fff;
+        font: inherit;
+        font-weight: 650;
+        cursor: pointer;
       }
-      h2 {
-        margin-top: 32px;
+      button + button { margin-inline-start: 8px; }
+      button[aria-pressed="true"] {
+        color: #fff;
+        background: #326b95;
       }
-      a {
-        color: #075e9c;
+      :where(a, button):focus-visible {
+        outline: 3px solid #d36b00;
+        outline-offset: 3px;
       }
       .updated {
         margin-top: 4px;
@@ -40,124 +56,234 @@
       }
       .notice {
         padding: 16px 18px;
-        border: 1px solid #f0cc70;
+        border: 1px solid #b88b18;
         border-radius: 12px;
         background: #fff4cc;
       }
-      hr {
-        margin: 48px 0;
-        border: 0;
-        border-top: 1px solid #d9dfe8;
+      [hidden] { display: none !important; }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          color-scheme: dark;
+          color: #eef4ff;
+          background: #101923;
+        }
+        h1, h2 { color: #d8eaff; }
+        a { color: #8fcfff; }
+        button {
+          border-color: #8fcfff;
+          color: #eef4ff;
+          background: #182536;
+        }
+        button[aria-pressed="true"] {
+          color: #101923;
+          background: #8fcfff;
+        }
+        .updated { color: #bdc7d3; }
+        .notice {
+          border-color: #d0a93f;
+          background: #392f16;
+        }
       }
     </style>
   </head>
   <body>
+    <header>
+      <nav aria-label="Idioma" id="language-nav">
+        <button type="button" data-lang="es" aria-pressed="true">Español</button>
+        <button type="button" data-lang="en" aria-pressed="false" lang="en">English</button>
+      </nav>
+    </header>
+
     <main>
-      <h1>Política de privacidad de Sunny Puzzles</h1>
-      <p class="updated">Última actualización: 15 de junio de 2026</p>
+      <article data-content-lang="es">
+        <h1>Política de privacidad de Sunny Puzzles</h1>
+        <p class="updated">Última actualización: 15 de junio de 2026</p>
+        <p class="notice">
+          Sunny Puzzles es un juego familiar de rompecabezas diseñado para funcionar principalmente
+          sin conexión. No requiere crear una cuenta y no opera un servidor propio para almacenar
+          datos personales de las familias.
+        </p>
+        <h2>Información guardada en el dispositivo</h2>
+        <p>La aplicación puede guardar localmente:</p>
+        <ul>
+          <li>nombres de perfiles familiares, rangos de edad y preferencias;</li>
+          <li>progreso, puntuaciones y ajustes de dificultad o asistencia;</li>
+          <li>fotos elegidas por la familia para crear rompecabezas personalizados.</li>
+        </ul>
+        <p>
+          Esta información permanece en el dispositivo y no se envía a un servidor de Sunny
+          Puzzles. Las fotos seleccionadas se procesan y guardan localmente. Sunny Puzzles no las
+          publica ni las comparte con otros usuarios.
+        </p>
+        <h2>Cuentas y autenticación</h2>
+        <p>
+          Sunny Puzzles no requiere una cuenta, correo electrónico ni inicio de sesión para jugar.
+          La verificación adulta puede utilizar una pregunta sencilla o las funciones de seguridad
+          del dispositivo para proteger ajustes y acciones externas. Sunny Puzzles no recibe ni
+          almacena el PIN, patrón, contraseña o datos biométricos del dispositivo.
+        </p>
+        <h2>Anuncios y datos técnicos</h2>
+        <p>
+          La versión Android puede mostrar anuncios mediante Google Mobile Ads (AdMob). Las
+          solicitudes se configuran como anuncios no personalizados, dirigidos a menores y
+          limitados a contenido con clasificación máxima G.
+        </p>
+        <p>
+          Google Mobile Ads puede procesar datos técnicos, como información del dispositivo,
+          dirección IP, interacciones con anuncios e identificadores limitados, para entregar,
+          medir, prevenir fraude y mantener la seguridad de los anuncios. Este procesamiento está
+          sujeto a las políticas de Google. Consulta
+          <a href="https://policies.google.com/privacy">la Política de Privacidad de Google</a>.
+        </p>
+        <h2>Permisos y contenido personalizado</h2>
+        <p>
+          Si la familia decide crear un rompecabezas personalizado, la aplicación permite elegir
+          una imagen disponible en el dispositivo. El acceso ocurre únicamente cuando la persona
+          lo solicita. La imagen se mantiene localmente y no se sube a Sunny Puzzles.
+        </p>
+        <h2>Conservación y eliminación</h2>
+        <p>
+          Los datos locales permanecen en el dispositivo hasta que la familia los elimina desde la
+          aplicación, borra los datos de la aplicación desde Android o desinstala Sunny Puzzles.
+          Sunny Puzzles no puede recuperar datos locales eliminados.
+        </p>
+        <h2>Privacidad infantil</h2>
+        <p>
+          Sunny Puzzles está diseñado para familias y menores. No solicita información de contacto
+          a los niños, no ofrece comunicación entre usuarios y no comparte fotos o progreso con
+          otros usuarios. Los anuncios de Android se configuran para tratamiento dirigido a
+          menores y por debajo de la edad de consentimiento.
+        </p>
+        <h2>Cambios en esta política</h2>
+        <p>
+          Actualizaremos esta página si cambian las funciones, los proveedores o las prácticas de
+          datos de Sunny Puzzles. La fecha de actualización aparecerá al inicio de la página.
+        </p>
+        <h2>Contacto</h2>
+        <p>
+          Para preguntas de privacidad o soporte:
+          <a href="mailto:genaro1024+sunnypluzzles@gmail.com">genaro1024+sunnypluzzles@gmail.com</a>.
+        </p>
+      </article>
 
-      <p class="notice">
-        Sunny Puzzles es un juego familiar de rompecabezas diseñado para funcionar principalmente
-        sin conexión. No requiere crear una cuenta y no opera un servidor propio para almacenar
-        datos personales de las familias.
-      </p>
-
-      <h2>Información guardada en el dispositivo</h2>
-      <p>La aplicación puede guardar localmente:</p>
-      <ul>
-        <li>nombres de perfiles familiares, rangos de edad y preferencias;</li>
-        <li>progreso, puntuaciones y ajustes de dificultad o asistencia;</li>
-        <li>fotos elegidas por la familia para crear rompecabezas personalizados.</li>
-      </ul>
-      <p>
-        Esta información permanece en el dispositivo y no se envía a un servidor de Sunny Puzzles.
-        Las fotos seleccionadas se procesan y guardan localmente. Sunny Puzzles no las publica ni
-        las comparte con otros usuarios.
-      </p>
-
-      <h2>Cuentas y autenticación</h2>
-      <p>
-        Sunny Puzzles no requiere una cuenta, correo electrónico ni inicio de sesión para jugar.
-        La verificación adulta puede utilizar una pregunta sencilla o las funciones de seguridad
-        del dispositivo para proteger ajustes y acciones externas. Sunny Puzzles no recibe ni
-        almacena el PIN, patrón, contraseña o datos biométricos del dispositivo.
-      </p>
-
-      <h2>Anuncios y datos técnicos</h2>
-      <p>
-        La versión Android puede mostrar anuncios mediante Google Mobile Ads (AdMob). Las
-        solicitudes se configuran como anuncios no personalizados, dirigidos a menores y limitados
-        a contenido con clasificación máxima G.
-      </p>
-      <p>
-        Google Mobile Ads puede procesar datos técnicos, como información del dispositivo,
-        dirección IP, interacciones con anuncios e identificadores limitados, para entregar,
-        medir, prevenir fraude y mantener la seguridad de los anuncios. Este procesamiento está
-        sujeto a las políticas de Google. Consulta
-        <a href="https://policies.google.com/privacy">la Política de Privacidad de Google</a>.
-      </p>
-
-      <h2>Permisos y contenido personalizado</h2>
-      <p>
-        Si la familia decide crear un rompecabezas personalizado, la aplicación permite elegir una
-        imagen disponible en el dispositivo. El acceso ocurre únicamente cuando la persona lo
-        solicita. La imagen se mantiene localmente y no se sube a Sunny Puzzles.
-      </p>
-
-      <h2>Conservación y eliminación</h2>
-      <p>
-        Los datos locales permanecen en el dispositivo hasta que la familia los elimina desde la
-        aplicación, borra los datos de la aplicación desde Android o desinstala Sunny Puzzles.
-        Sunny Puzzles no puede recuperar datos locales eliminados.
-      </p>
-
-      <h2>Privacidad infantil</h2>
-      <p>
-        Sunny Puzzles está diseñado para familias y menores. No solicita información de contacto a
-        los niños, no ofrece comunicación entre usuarios y no comparte fotos o progreso con otros
-        usuarios. Los anuncios de Android se configuran para tratamiento dirigido a menores y por
-        debajo de la edad de consentimiento.
-      </p>
-
-      <h2>Cambios en esta política</h2>
-      <p>
-        Actualizaremos esta página si cambian las funciones, los proveedores o las prácticas de
-        datos de Sunny Puzzles. La fecha de actualización aparecerá al inicio de la página.
-      </p>
-
-      <h2>Contacto</h2>
-      <p>
-        Para preguntas de privacidad o soporte:
-        <a href="mailto:genaro1024+sunnypluzzles@gmail.com">genaro1024+sunnypluzzles@gmail.com</a>.
-      </p>
-
-      <hr>
-
-      <h1 lang="en">Sunny Puzzles Privacy Policy</h1>
-      <p class="updated" lang="en">Last updated: June 15, 2026</p>
-
-      <p lang="en">
-        Sunny Puzzles is a family puzzle game designed to work primarily offline. It does not
-        require an account and does not operate its own server to store family personal data.
-        Family profiles, age ranges, preferences, progress, scores, settings, and photos selected
-        for custom puzzles remain on the device and are not uploaded to Sunny Puzzles.
-      </p>
-      <p lang="en">
-        The Android version may display ads using Google Mobile Ads (AdMob). Ad requests are
-        configured as non-personalized, child-directed, under the age of consent, and limited to a
-        maximum G content rating. Google Mobile Ads may process technical data such as device
-        information, IP address, ad interactions, and limited identifiers to deliver and secure
-        ads. See <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.
-      </p>
-      <p lang="en">
-        Sunny Puzzles does not request children's contact information, provide user-to-user
-        communication, or share custom photos and progress with other users. Local data can be
-        deleted from the app, by clearing Android app data, or by uninstalling the app.
-      </p>
-      <p lang="en">
-        Privacy and support contact:
-        <a href="mailto:genaro1024+sunnypluzzles@gmail.com">genaro1024+sunnypluzzles@gmail.com</a>.
-      </p>
+      <article data-content-lang="en" lang="en" hidden>
+        <h1>Sunny Puzzles Privacy Policy</h1>
+        <p class="updated">Last updated: June 15, 2026</p>
+        <p class="notice">
+          Sunny Puzzles is a family puzzle game designed to work primarily offline. It does not
+          require an account and does not operate its own server to store families' personal data.
+        </p>
+        <h2>Information stored on the device</h2>
+        <p>The app may store the following information locally:</p>
+        <ul>
+          <li>family profile names, age ranges, and preferences;</li>
+          <li>progress, scores, and difficulty or assistance settings;</li>
+          <li>photos selected by the family to create custom puzzles.</li>
+        </ul>
+        <p>
+          This information remains on the device and is not sent to a Sunny Puzzles server.
+          Selected photos are processed and stored locally. Sunny Puzzles does not publish them or
+          share them with other users.
+        </p>
+        <h2>Accounts and authentication</h2>
+        <p>
+          Sunny Puzzles does not require an account, email address, or sign-in to play. Adult
+          verification may use a simple question or the device's security features to protect
+          settings and external actions. Sunny Puzzles does not receive or store the device PIN,
+          pattern, password, or biometric data.
+        </p>
+        <h2>Ads and technical data</h2>
+        <p>
+          The Android version may display ads using Google Mobile Ads (AdMob). Ad requests are
+          configured as non-personalized, child-directed, and limited to a maximum G content
+          rating.
+        </p>
+        <p>
+          Google Mobile Ads may process technical data, such as device information, IP address, ad
+          interactions, and limited identifiers, to deliver and measure ads, prevent fraud, and
+          maintain ad security. This processing is subject to Google's policies. See
+          <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.
+        </p>
+        <h2>Permissions and custom content</h2>
+        <p>
+          If the family chooses to create a custom puzzle, the app allows them to select an image
+          available on the device. Access occurs only when the person requests it. The image
+          remains local and is not uploaded to Sunny Puzzles.
+        </p>
+        <h2>Retention and deletion</h2>
+        <p>
+          Local data remains on the device until the family deletes it from the app, clears the
+          app's Android data, or uninstalls Sunny Puzzles. Sunny Puzzles cannot recover deleted
+          local data.
+        </p>
+        <h2>Children's privacy</h2>
+        <p>
+          Sunny Puzzles is designed for families and children. It does not request children's
+          contact information, provide user-to-user communication, or share photos or progress
+          with other users. Android ads are configured for child-directed treatment and users
+          under the age of consent.
+        </p>
+        <h2>Changes to this policy</h2>
+        <p>
+          We will update this page if Sunny Puzzles features, providers, or data practices change.
+          The updated date will appear at the top of the page.
+        </p>
+        <h2>Contact</h2>
+        <p>
+          For privacy or support questions:
+          <a href="mailto:genaro1024+sunnypluzzles@gmail.com">genaro1024+sunnypluzzles@gmail.com</a>.
+        </p>
+      </article>
     </main>
+
+    <script>
+      (() => {
+        const supported = new Set(["es", "en"]);
+        const queryLanguage = new URLSearchParams(location.search).get("lang");
+        let savedLanguage = null;
+
+        try {
+          savedLanguage = localStorage.getItem("sunny-puzzles-privacy-language");
+        } catch {
+          // The language switcher still works when storage is unavailable.
+        }
+
+        const browserLanguage = navigator.languages?.[0] || navigator.language || "es";
+        const initialLanguage =
+          (supported.has(queryLanguage) && queryLanguage) ||
+          (supported.has(savedLanguage) && savedLanguage) ||
+          (browserLanguage.toLowerCase().startsWith("en") ? "en" : "es");
+
+        const setLanguage = (language, persist = true) => {
+          document.documentElement.lang = language;
+          document.title =
+            language === "en"
+              ? "Privacy Policy | Sunny Puzzles"
+              : "Política de privacidad | Sunny Puzzles";
+
+          document.querySelectorAll("[data-content-lang]").forEach((section) => {
+            section.hidden = section.dataset.contentLang !== language;
+          });
+          document.querySelectorAll("[data-lang]").forEach((button) => {
+            button.setAttribute("aria-pressed", String(button.dataset.lang === language));
+          });
+
+          if (persist) {
+            try {
+              localStorage.setItem("sunny-puzzles-privacy-language", language);
+            } catch {
+              // Preference persistence is optional.
+            }
+          }
+        };
+
+        document.getElementById("language-nav").addEventListener("click", (event) => {
+          const button = event.target.closest("[data-lang]");
+          if (button) setLanguage(button.dataset.lang);
+        });
+
+        setLanguage(initialLanguage, false);
+      })();
+    </script>
   </body>
 </html>
